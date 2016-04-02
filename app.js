@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var routes = require('./routes/index');
 var config = require('./config.js');
+var User   = require('./dbschema/User.js');
 var app = express();
 
 // view engine setup
@@ -28,6 +29,19 @@ mongoose.connection.on('error', function(err) {
         console.log("Error connecting to mongodb: " + err);
 });
 mongoose.connect(config.DB_URL);
+
+User.findOne({'auth.userId':'admin@securefileserver.com'}, function(err ,user){
+	if(err) console.log('User Created ' +err);
+	if(!user){
+		var newUser = new User();
+		newUser.auth.userId = 'admin@securefileserver.com';
+		newUser.auth.password = newUser.generateHash('secure@123');
+		newUser.save(function(err, user){
+			if(user) { console.info('Admin Created');}
+		});		
+	}
+});
+
 
 app.use('/', routes);
 

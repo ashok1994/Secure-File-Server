@@ -1,4 +1,4 @@
-var mongooose = require('mongoose');
+var mongoose = require('mongoose');
 var bcrypt    = require('bcrypt-nodejs');
 
 
@@ -26,7 +26,7 @@ userSchema.methods.generateHash = function(password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
 };
 userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.local.password);
+    return bcrypt.compareSync(password, this.auth.password);
 };
 
 
