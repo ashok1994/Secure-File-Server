@@ -6,10 +6,16 @@ var obj = { name : "Ashok" };
 var tokens = [] ;
 
 
-exports.encodeToken = function(object){
+exports.newAuthToken = function(userId){
+	var object = {
+		userId : userId
+	};
 
+	
 	object.expires = new Date((new Date()).getTime() + (1000*60*60*24));
+	
 	var encodedToken = jwt.encode(object, config.JWT_KEY);
+	
 	tokens.push(encodedToken);
 
 	return encodedToken;
@@ -18,12 +24,12 @@ exports.encodeToken = function(object){
 
 
 
-function getUserIdFromToken = function(accessToken){
+function decodeToken(accessToken){
 
 	return jwt.decode(accessToken, config.JWT_KEY);
 }
 
-exports.getUserIdFromToken = getUserIdFromToken;
+exports.decodeToken = decodeToken;
 
 
 
@@ -34,13 +40,16 @@ exports.removeToken =  function(accessToken){
 	return;
 }
 
+exports.getUserIdFromToken = function(accesToken){
+       var userObject  = jwt.decode(accessToken, config.JWT_KEY);
+       return userObject.userId; 
+}
 
 
 
-
-export.requiresAuthentication = function( req , res , next){
+exports.requiresAuthentication = function( req , res , next){
 	if(req.headers.access_token && tokens.indexOf(req.headers.access_token !== -1)){
-		var decodedToken = getUserIdFromToken(req.headers.access_token);
+		var decodedToken = decodeToken(req.headers.access_token);
 		if(new Date(decodedToken.expires) < new Date()){
 			next(req,res);
 		}else{
