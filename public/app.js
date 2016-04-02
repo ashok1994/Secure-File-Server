@@ -10,7 +10,8 @@ app.config(function($routeProvider, $locationProvider){
 		controller  : "HomeController"
 	})
 
-	$locationProvider.html5mode(true);
+	.otherwise({redirectTo : '/'});
+	$locationProvider.html5Mode(true);
 });
 
 
