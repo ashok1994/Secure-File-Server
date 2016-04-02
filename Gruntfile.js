@@ -4,20 +4,20 @@ module.exports = function(grunt){
 			build : {
 				files : [
 							{
-								src  : ['public/features/**/controllers/*.js'],
-								dest : 'public/Features/controllers.min.js'
+								src  : ['public/features/**/controllers/*.js', 'public/common/*.js'],
+								dest : 'public/features/controllers.min.js'
 							},
 							{
-								src  : ['public/Features/**/Services/*.js'],
-								dest : 'public/Features/services.min.js'
+								src  : ['public/features/**/Services/*.js'],
+								dest : 'public/features/services.min.js'
 							},
 							{
-								src : ['public/Filters/*.js'],
-								dest : 'public/Features/filters.min.js'
+								src : ['public/filters/*.js'],
+								dest : 'public/features/filters.min.js'
 							},
 							{
-								src  : 'public/Directives/*.js',
-								dest : 'public/Features/directives.min.js' 
+								src  : 'public/directives/*.js',
+								dest : 'public/features/directives.min.js' 
 							}
 						]
 			}
@@ -31,7 +31,7 @@ module.exports = function(grunt){
 
 		watch : {
 			scripts : {
-				files : ['public/features/*.js'],
+				files : ['public/features/*.js', 'public/common/*.js'],
 				tasks : ['uglify','concat'],
 				options : {
 					spawn : false,

@@ -1,4 +1,11 @@
-var app = angular.module('secureFileServer', ['ngRoute','controllers'])
+var app = angular.module('secureFileServer', 
+	[
+		'ngRoute', 
+		'app.controllers', 
+		'app.services', 
+		'app.directives',
+		'ngMaterial'
+	])
 
 
 app.config(function($routeProvider, $locationProvider){

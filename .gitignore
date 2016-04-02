@@ -1,4 +1,7 @@
 node_modules
+
 public/libs
+
 npm-debug.log
-public/features/*.min.js
+
+*.min.js
