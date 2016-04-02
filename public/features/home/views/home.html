@@ -1,1 +1,38 @@
 {{msg}}
+<div class="container">
+<div class="col-sm-6 col-sm-offset-3">
+    <h1>Login</h1>
+    <form class="Loginform" action="index.html" method="post">
+        <div class="row page-content">
+            <div class="row control-group">
+                <div class="col-md-3">
+                    <label for="Email">Email</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="text" name="Email" ng-model="Email" placeholder="Enter Email" required/>
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="col-md-3">
+                    <label for="password">Password</label>
+                </div>
+                <div class="col-md-3">
+                    <input type="password" name="password" ng-model="password" placeholder="Enter Password" required/>
+                </div>
+            </div>
+            <br>
+            <div class="row control-group">
+    		        <div class="col-md-3">
+    		            <button class="md-raised" ng-click="login()">Login</button>
+    		        </div>
+            </div>
+            <br>
+            <div class="row control-group">
+    		        <div class="col-md-3">
+    		            <button class="md-raised" ng-click="signup()">Sign Up</button>
+    		        </div>
+            </div>
+        </div>
+    </form>
+</div>
+</div>
