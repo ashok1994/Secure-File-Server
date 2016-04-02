@@ -1,4 +1,4 @@
-angular.module("controllers")
+angular.module("app.controllers")
 .controller("HomeController", ["$scope", 
 	function($scope){
 		$scope.msg = "hello anks";
