@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+  	<head>
+    	<title>Secure File Server</title>
+    	<base href="/" >
+    	<script type="text/javascript" src="libs/angular/angular.min.js"></script>
+    	<script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
+
+	  	<script type="text/javascript" src="app.controllers.js"></script>
+	  	<script type="text/javascript" src="app.services.js"></script>
+	  	<script type="text/javascript" src="app.directives.js"></script>
+	  	<script type="text/javascript" src="js-bundle.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+  	</head>
+ 	<body ng-app="secureFileServer">
+		<div ng-view></div>
+  	</body>
 </html>
