@@ -28,6 +28,7 @@
             <div class="md-toolbar-tools">
                 <h2><span style="margin:10px;" ng-click="toggleLeft('left')"><i class="fa fa-bars"></i></span><span> Secure File Server</span></h2>
             </div>
+            
         </md-toolbar>
 
         <div layout="row">
@@ -39,6 +40,11 @@
                         <span flex="20" ng-click="toggleLeft('left')"><i class="fa fa-bars"></i></span>
                     </div>
                 </md-toolbar>
+                <md-content layout-padding layout-wrap>
+                    
+                    <p ng-click="logout()" ng-if="isLoggedIn">Logout</p> 
+                            
+                </md-content>
                 <span style="color:white">{{mediaVal('gt-md')}}</span>
 
             </md-sidenav>
