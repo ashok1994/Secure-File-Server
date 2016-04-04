@@ -10,6 +10,8 @@ var authApi = require('../api/authApi.js');
 
 
 router.post('/api/login', authApi.login);
+router.post('/api/logout', authApi.logout);
+
 
 router.get('*', function(req, res, next) {
   res.render('index', { title: 'Express' });
