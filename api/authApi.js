@@ -29,6 +29,7 @@ exports.login = function(req , res){
 
 
 exports.logout = function( req , res){
-		tokenApi.removeToken(req.headers.access_token);
-		return res.status(200).send({ message : 'Logged out' });
+	console.log(req.headers.access_token);
+	tokend.removeToken(req.headers.access_token);
+	return res.status(200).send({ message : 'Logged out' });
 }

@@ -35,8 +35,9 @@ exports.decodeToken = decodeToken;
 
 
 exports.removeToken =  function(accessToken){
-
+	// console.log("------------"+tokens.length);
 	if(tokens.indexOf(accessToken)!==-1) tokens.splice(tokens.indexOf(accessToken),1);
+	// console.log("++++++++++++++++"+tokens);
 	return;
 }
 
