@@ -18,7 +18,6 @@ exports.addUser = function( req , res){
         newUser.save(function(err ,  freshUser){
             if(err) { console.error('Database err'+ err); return res.status(500).send({message : 'Internal Server Error'});}
             return { console.info('User created '); return res.status(200).send({message : 'User created'});}
-
         });
 
     });
