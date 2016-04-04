@@ -1,42 +1,30 @@
-{{msg}}
-<<<<<<< HEAD
-<div class="container">
-<div class="col-sm-6 col-sm-offset-3">
-    <h1>Login</h1>
-    <form class="Loginform" action="index.html" method="post">
-        <div class="row page-content">
-            <div class="row control-group">
-                <div class="col-md-3">
-                    <label for="Email">Email</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="text" name="Email" ng-model="Email" placeholder="Enter Email" required/>
-                </div>
-            </div>
-            <div class="row control-group">
-                <div class="col-md-3">
-                    <label for="password">Password</label>
-                </div>
-                <div class="col-md-3">
-                    <input type="password" name="password" ng-model="password" placeholder="Enter Password" required/>
-                </div>
-            </div>
-            <br>
-            <div class="row control-group">
-    		        <div class="col-md-3">
-    		            <button class="md-raised" ng-click="login()">Login</button>
-    		        </div>
-            </div>
-            <br>
-            <div class="row control-group">
-    		        <div class="col-md-3">
-    		            <button class="md-raised" ng-click="signup()">Sign Up</button>
-    		        </div>
-            </div>
-        </div>
-    </form>
+
+<div layout="column" md-whiteframe-z1>
+    <div layout="row">
+        <div flex></div>
+        <h1 class="md-display-1">Secure Server Login</h1>
+        <div flex></div>
+    </div>
+
+    <div layout="row">
+        <div flex></div>
+        <md-input-container flex="33">
+           <label>User ID</label>
+           <input ng-model="user.id">
+       </md-input-container>
+         <div flex></div>
+    </div>
+    <div layout="row">
+        <div flex></div>
+        <md-input-container flex="33">
+           <label>Password</label>
+           <input type="password" ng-model="user.password">
+        </md-input-container>
+        <div flex></div>
+    </div>
+    <div layout="row">
+        <div flex></div>
+        <md-button flex="33" class="md-primary md-raised">Login</md-button>
+        <div flex></div>
+    </div>
 </div>
-</div>
-=======
-<md-button class="md-raised" href="#"  aria-label="description"  md-ripple-size="full">content</md-button>
->>>>>>> 44016a3adb7aae9464ac1f5f3cfcdf34161046d5

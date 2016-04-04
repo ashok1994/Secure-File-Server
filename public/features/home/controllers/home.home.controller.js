@@ -1,4 +1,4 @@
-angular.module("controllers")
+angular.module("app.controllers")
 .controller("HomeController", ["$scope", "localStorageService", "$location", "$window",
 	function($scope, localStorageService, $location, $window){
 		console.log(localStorageService.set("key", "value"));
