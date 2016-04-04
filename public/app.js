@@ -21,6 +21,10 @@ app.config(function($routeProvider, $locationProvider, localStorageServiceProvid
 		templateUrl : "features/home/views/home.html",
 		controller  : "HomeController"
 	})
+	.when('/dashboard', {
+		templateUrl : "features/home/views/home.dashboard.html",
+		controller  : "DashboardController"
+	})
 
 	.otherwise({redirectTo : '/'});
 	$locationProvider.html5Mode(true);

@@ -31,7 +31,7 @@ module.exports = function(grunt){
 
 		watch : {
 			scripts : {
-				files : ['public/features/*.js', 'public/common/*.js'],
+				files : ['public/features/**/controllers/*.js', 'public/common/*.js'],
 				tasks : ['uglify','concat'],
 				options : {
 					spawn : false,

@@ -54,11 +54,11 @@ exports.requiresAuthentication = function( req , res , next){
 			next(req,res);
 		}else{
 			tokens.splice(tokens.indexOf(req.headers.access_token),1);
-			return res.status(401).send({message : 'Unauthorized Request(Invalid Token)'}
+			return res.status(401).send({message : 'Unauthorized Request(Invalid Token)'});
 		
 		}
 	}else{
-		return res.status(401).send({message : 'Unauthorized Request(Invalid Token)'}
+		return res.status(401).send({message : 'Unauthorized Request(Invalid Token)'});
 	}
 	
 }

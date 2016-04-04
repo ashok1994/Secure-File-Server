@@ -16,7 +16,7 @@ var userSchema = mongoose.Schema({
 	name  : String,
 	email : String,
 	phone : Number,
-	auth  : Auth	
+	auth  : Auth
 	 
 
 

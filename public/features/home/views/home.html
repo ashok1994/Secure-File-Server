@@ -24,7 +24,12 @@
     </div>
     <div layout="row">
         <div flex></div>
-        <md-button flex="33" class="md-primary md-raised">Login</md-button>
+        <p style="color: black">{{errorMsg}}</p>
+        <div flex></div>
+    </div>
+    <div layout="row">
+        <div flex></div>
+        <md-button flex="33" class="md-primary md-raised" ng-click="login()">Login</md-button>
         <div flex></div>
     </div>
 </div>

@@ -11,7 +11,7 @@ angular.module('app.controllers')
 		}
 
 		$scope.mediaVal = function(val){
-			console.log($mdMedia(val));
+			// console.log($mdMedia(val));
 			return $mdMedia(val);
 		}
 	}
