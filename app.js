@@ -8,6 +8,7 @@ var mongoose   = require('mongoose');
 var routes = require('./routes/index');
 var config = require('./config.js');
 var User   = require('./dbschema/User.js');
+var busboy = require('connect-busboy');
 var app = express();
 
 // view engine setup
@@ -20,6 +21,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(busboy());
 app.use(express.static(path.join(__dirname, 'public')));
 
 mongoose.connection.on('connected', function () {
@@ -31,14 +33,15 @@ mongoose.connection.on('error', function(err) {
 mongoose.connect(config.DB_URL);
 
 User.findOne({'auth.userId':'admin@securefileserver.com'}, function(err ,user){
-	if(err) console.log('User Created ' +err);
+	if(err) console.log('User Creation on start :  ' +err);
 	if(!user){
 		var newUser = new User();
 		newUser.auth.userId = 'admin@securefileserver.com';
+        newUser.role = 'admin';
 		newUser.auth.password = newUser.generateHash('secure@123');
 		newUser.save(function(err, user){
 			if(user) { console.info('Admin Created');}
-		});		
+		});
 	}
 });
 
