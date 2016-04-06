@@ -5,6 +5,10 @@ angular.module("app.controllers")
 		
 		$scope.user = {};
 		$scope.errorMsg = "";
+		if(localStorageService.get('access_token') && $rootScope.isLoggedIn){
+			console.log(localStorageService.get('access_token'));
+			$location.path('/dashboard');
+		}
 		$scope.login = function () {
 			console.log("tkdgfhh");
 			if(!$scope.user.id || !$scope.user.password){
