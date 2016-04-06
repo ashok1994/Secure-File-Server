@@ -63,3 +63,18 @@ exports.requiresAuthentication = function( req , res , next){
 	}
 
 }
+
+exports.checkForToken = function(req, res) {
+
+    if (!req.headers.access_token) 
+        return res.status(401).send({ message: "Unauthorized request!" } );
+
+    var decodedToken = decodeToken(req.headers.access_token);
+    if(tokens.indexOf(decodedToken) === -1){
+    	return res.status(401).send({message:"Invalid access_token"});
+    }
+    if (decodedToken && new Date(decodedToken.expires) > new Date()) {
+        return res.status(200).send({message:"Valid access_token"});
+    }
+    return res.status(401).send({ message: "Expired session!" } );
+};
