@@ -25,7 +25,7 @@ exports.newAuthToken = function(userId){
 
 
 function decodeToken(accessToken){
-
+	// console.log(accessToken);
 	return jwt.decode(accessToken, config.JWT_KEY);
 }
 
@@ -41,9 +41,11 @@ exports.removeToken =  function(accessToken){
 	return;
 }
 
-exports.getUserIdFromToken = function(accesToken){
-       var userObject  = jwt.decode(accessToken, config.JWT_KEY);
-       return userObject.userId;
+exports.getUserIdFromToken = function(accessToken){
+   // console.log("2----------"+accessToken, config.JWT_KEY||"helllll");
+   var userObject  = jwt.decode(accessToken, config.JWT_KEY);
+   // console.log(userObject);
+   return userObject.userId
 }
 
 

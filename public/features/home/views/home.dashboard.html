@@ -1,1 +1,99 @@
-{{msg}}
+<div style="position: absolute;width:100%;height:100vh;background: lightgray; opacity:.8;z-index:2000" ng-if="wait">
+	<center>
+		<p style="margin-top: 20%;font-size: 22px;">
+			Uploading
+		</p>
+	</center>
+</div>
+
+<div class="fluid-container">
+	<div class="row">
+		<!-- Left section -->
+		<div class="col-md-2">
+			<div style="padding:10px;">
+				<md-list>
+				 	<md-list-item style="background: #CC181E;">
+				 	  	<i class="fa fa-home" style="font-size: 20px;color:white"> Home</i>
+				 	</md-list-item> 
+				 	<md-list-item ng-click="alert()">
+				 	  	Profile
+				 	</md-list-item>
+				 	<md-list-item ng-click="toggleFileFeild()">
+				 	  	{{!showFileUpload? "Upload Video": "Cancel"}}
+				 	</md-list-item>
+				</md-list>
+			</div>
+		</div>
+		<!-- END: left section -->
+		
+		<div class="col-md-10" ng-if="!showFileUpload">
+			<div class="row" style="margin-top:10px">
+				<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 video-container" ng-repeat="video in videos">
+					<div ng-click="showVid(video._id)">	
+						<div style="" ng-style="">
+							<img ng-src="public/images/{{video.thumbs}}" alt="" class="img-responsive">
+						</div>
+						<div>{{video.name}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-10" ng-if="showFileUpload" style="margin-top:10%;">
+			
+			<center>
+				
+				<div style="display: inline-block;cursor: pointer !important;" >
+					<p style="font-size: 20px;">Upload Video</p><br>
+					
+					<button type="text" style="position: absolute;display: block;top:34px;cursor:pointer;" class="button-primary" ng-disabled="disable">Choose File</button>
+					
+					<input type="file" ng-file-select="getfileobj($files)" name="file"
+                    accept=".3gp,.flv,.mp4,.ogv,.webm,.jpeg,.jpg,.png,.gif,.bmp"
+                    ngf-max-size="1000MB" ng-model="filename" class="display-inline"
+                    id="eventFiles" style="position: relative;display: block;opacity: 0;height:40px;width:150px;cursor:pointer !important;"
+                    ng-disabled="disable" style="display: inline">
+					
+				</div>
+				<div  ng-show="fileObject">
+					<span>{{fileObject.name}}</span>
+				</div>	
+				<br><br>
+				<span>File Name :</span><input type="text" ng-model="file.name">
+				<md-button class="md-raised md-primary" aria-label="description" md-no-ink="true" md-ripple-size="full" style="margin-left: -20px;" ng-click="upload()">Upload</md-button>		
+			</center>	
+					
+				
+		</div>
+
+	</div>
+</div>
+
+
+<style>
+	.video-container{
+		margin:10px;
+		/*border: 1px solid black;*/
+
+
+	}
+	.pushDown{
+        top:40%;
+    }
+    .upBannerWrap{
+        background: white;
+        min-height: 150px;
+        border-radius: 8px;
+        padding-bottom: 10px;
+    }
+    div.well.tempName{
+        padding: 5px;
+        margin-top: 10px;
+    }
+    .bannerUploadBut{
+        border:none;
+        outline: none;
+        /*border:1px solid gray;*/
+        border-radius:5px;
+    }
+</style>

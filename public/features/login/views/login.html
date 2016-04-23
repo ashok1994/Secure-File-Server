@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<center>
+				<div style="margin-top:17%">
+					<div ng-hide="showData">
+						<p style="font-size: 18px">login to to upload videos</p>
+						<button class="btn btn-primary" ng-click="googleLogin()">
+							Login through google account
+						</button>
+						<br><br>
+						<p>
+							by clicking, you accept our all terms and condition
+						</p>
+					</div>
+					<div ng-show="showData">
+						<div class="form-group">
+							<label for="">Name</label>
+							<input type="text" ng-model="fullName" readonly="">
+						</div>
+						<div class="form-group">
+							<label for="">Email</label>
+							<input type="text" ng-model="email" readonly="">
+						</div>
+					</div>
+				</div>
+
+
+			</center>
+		</div>
+	</div>
+</div>

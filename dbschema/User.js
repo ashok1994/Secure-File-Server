@@ -13,12 +13,13 @@ var Auth = {
 
 var userSchema = mongoose.Schema({
 	
-	name  : String,
-	email : String,
-	phone : Number,
-	auth  : Auth,	
-	role  : {type : String ,enum : ['user', 'admin'] } 
+	name   : String,
+	email  : String,
+	phone  : Number,
+	auth   : Auth,	
+	role   : {type : String ,enum : ['user', 'admin'], default:'user'}, 
 
+	videos : [{type:mongoose.Schema.Types.ObjectId, ref:"Video"}]
 
 
 });

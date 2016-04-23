@@ -2,38 +2,33 @@ angular.module('app.controllers')
 .controller("TabController", ["$scope",  "$timeout", "$mdSidenav", "$log","$mdMedia", "localStorageService", "$rootScope", "$location", "AuthSvc",
 	function($scope,  $timeout, $mdSidenav, $log, $mdMedia, localStorageService, $rootScope, $location, AuthSvc){
 		// console.log($mdMedia);
-		$scope.toggleLeft = function(navId){
-			$mdSidenav(navId)
-        	  .toggle()
-        	  .then(function () {
-            	$log.debug("toggle " + navId + " is done");
-          	});
-		}
-		if(localStorageService.get("access_token") && localStorageService.get("access_token").length>10){
+	
+		if(localStorageService.get("userInfo")){
 			// TODO: Check for token;
+			console.log("yess");
 			$rootScope.isLoggedIn = true;
-			$location.path("/dashboard");
+			// $location.path("/");
 		}else{
+			console.log("no")
 			$rootScope.isLoggedIn = false;
-			$location.path('/');
+			// $location.path('/');
 		}
 
-
-		$scope.logout = function(){
+		console.log($location.path());
+		$rootScope.logout = function(){
 			AuthSvc.logout()
 			.then(function(resp){
 				$rootScope.isLoggedIn = false;
 				$location.path("/");
 			}, function(err){
 				$rootScope.isLoggedIn = false;
-				localStorageService.remove("access_token");
+				localStorageService.remove("userInfo");
 				$location.path("/");
 			});
 		}
 
-		$scope.mediaVal = function(val){
-			// console.log($mdMedia(val));
-			return $mdMedia(val);
-		}
+
+
+		
 	}
 ]);

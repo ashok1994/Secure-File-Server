@@ -5,7 +5,9 @@ var app = angular.module('secureFileServer',
 		'app.services', 
 		'app.directives',
 		'ngMaterial',
-		'LocalStorageModule'
+		'LocalStorageModule',
+		'angularFileUpload',
+		'ui.bootstrap'
 	]);
 
 
@@ -18,12 +20,17 @@ app.config(function($routeProvider, $locationProvider, localStorageServiceProvid
 
 	$routeProvider
 	.when('/', {
-		templateUrl : "features/home/views/home.html",
-		controller  : "HomeController"
-	})
-	.when('/dashboard', {
 		templateUrl : "features/home/views/home.dashboard.html",
 		controller  : "DashboardController"
+	})
+	.when('/login', {
+		templateUrl : "features/login/views/login.html",
+		controller  : "LoginController"
+	})
+	.when('/view/:vidId', {
+		templateUrl : "features/video/views/displayVideo.html",
+		controller  : "VideoController"
+
 	})
 
 	.otherwise({redirectTo : '/'});
