@@ -6,6 +6,4 @@ npm-debug.log
 
 *.min.js
 
-userdata/videos/*
-
-userdata/images/*
+userdata
