@@ -23,7 +23,11 @@ app.config(function($routeProvider, $locationProvider, localStorageServiceProvid
 		templateUrl : "features/home/views/home.dashboard.html",
 		controller  : "DashboardController"
 	})
-	.when('/login', {
+	.when('/:q', {
+		templateUrl : "features/home/views/home.dashboard.html",
+		controller  : "DashboardController"
+	})
+	.when('/auth/login', {
 		templateUrl : "features/login/views/login.html",
 		controller  : "LoginController"
 	})
@@ -31,6 +35,10 @@ app.config(function($routeProvider, $locationProvider, localStorageServiceProvid
 		templateUrl : "features/video/views/displayVideo.html",
 		controller  : "VideoController"
 
+	})
+	.when('/user/profile', {
+		templateUrl : "features/video/views/myVideos.html",
+		controller  : "MyVideoController"		
 	})
 
 	.otherwise({redirectTo : '/'});

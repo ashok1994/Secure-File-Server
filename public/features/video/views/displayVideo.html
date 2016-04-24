@@ -1,16 +1,129 @@
-<div class="fluid-container">
+	
+<div class="container-fluid" style="background: #EFEFEF;">
 	<div class="row">
-		<div class="col-xs-12 col-sm-8 col-md-9">
-			<div style="margin-left: 40px;margin-top:20px;border:1px solid;min-height: 300px;">
-				<video width="100%" height="100%" autoplay="true" preload="auto" autobuffer controls>
+
+		<div class=" col-xs-12 col-sm-8 col-md-8 col-sm-offset-1 col-md-offset-1">
+
+			<md-card style="min-height: 300px;" class="">
+				<video width="100%" height="100%"  preload="auto" autobuffer controls>
 					<source src="{{getUrl()}}" type="video/mp4">
 					<source src="{{getUrl()}}" type="video/avi">
 					<source src="{{getUrl()}}" type="video/flv">
 					<source src="{{getUrl()}}" type="video/mkv">
-					Ypur Browser does not support HTML5
+					Your Browser does not support HTML5
 					
 				</video>
+			</md-card>
+			<div class="row">
+				
+				<div class="like-section col-xs-12">
+					<span style="font-size: 50px">{{video.name}}</span>
+					<span style="color:grey;font-size: 50px" class="pull-right " >{{video.likes.length}}
+					 	<i class="fa fa-thumbs-up like" ng-style="getLikedStatus()? {color:'red'}: {}" uib-tooltip="Like this" ng-click="postLike()" style="outline: none;"></i>
+					 	
+					 </span> 
+					<br>
+					<span style="font-size: 20px;">{{video.user.name}}</span>
+				</div>
+
+
+
+			</div>
+
+			<br/>
+			<br/>
+			<br/>
+
+			<div class="row comment-section">
+				<div class="">
+					<h2>Comments</h2>
+					<textarea resize="none" class="textarea" ng-model="commentData"></textarea>
+					<button class="button" ng-click="postComment(commentData)"><i class="fa fa-send" style="color: white"></i></button>
+				</div>
+			</div>
+			<br/>
+			<div class="row comment-section" ng-repeat="comment in video.comments" style="margin-bottom:10px;">
+				<div class="">
+					<h2 style="color: gray">{{comment.name}} </h2>
+					<h4>{{comment.data}}</h4>			
+				</div>
+			</div>
+
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+
+		</div>
+		<div class="col-md-3 hidden-xs hidden-sm">
+			<div class="row hidden-xs">
+				<div class="col-xs-12">
+
+					<md-card style="width: 80%" ng-repeat="latestVideo in latestVideos" ng-click="playThis(latestVideo._id)">
+						<!-- <img /> -->
+						<div style="background-image: url({{'public/images/'+latestVideo.thumbs}}); background-size: 100%;min-height: 150px;">
+							<div class="transparent-panel">
+							<span >{{latestVideo.name}}</span>
+							</div>
+						</div>
+					</md-card>
+				</div>
 			</div>
 		</div>
+
+
+
+
+
+
 	</div>
 </div>
+
+
+<style>
+body{
+}
+	.transparent-panel{
+		    position: relative;
+    top: 109px;
+    vertical-align: bottom;
+    /* bottom: 0px; */
+    color: white;
+    background: black;
+    opacity: .7;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 10px;
+    font-size: 20px;
+    font-family: 'Arvo',sans-serif;
+    font-weight: 100;
+    padding-bottom: 5px;
+
+	}
+	.textarea{
+		width:600px;
+		height: 80px;
+		border: 2px solid lightgray;
+	}
+	.comment-section{
+		margin-left: 5%;
+		width: 90%;
+		background: white;
+		padding: 20px;
+		box-shadow: 0px 2px 2px grey;
+	}
+
+	.button{
+		background: red;
+		padding: 5px 20px 5px 20px;
+		margin-top: 35px;
+		height: 40px;
+		border: none;
+	}
+	.like{
+		transition: all 1s;
+	}
+	.like:hover{
+		color: red;
+	}
+</style>

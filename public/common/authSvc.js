@@ -86,9 +86,12 @@ angular.module('app.services')
 	              userInfoData.accessToken = result.data.access_token;
 	              userInfoData.name        = result.data.user.name;
 	              userInfoData.email       = result.data.user.email;
+	              userInfoData.userId      = result.data.user._id.toString();
+	              
 	              localStorageService.set('userInfo', userInfoData);
+	              
 	              console.log(result);
-	              alert("hell");
+	              // alert("hell");
 	              setTimeout(function(){
 	                deferred.resolve(result);
 	              },10);
@@ -154,6 +157,107 @@ angular.module('app.services')
 				headers: headers
 			}).then(function(resp){
 				console.log(resp);
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;
+		}
+
+		this.searchVideo = function(query){
+			var deferred = $q.defer();
+			$http({
+				url     : "/api/searchVideo",
+				method  : "POST",
+				data    : {key: query}
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;
+		}
+		
+		this.getlatestVideos = function(){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/getlatestVideos",
+				method : "POST"
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;
+		}
+
+		this.getVideoDetails = function(vidId){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/getVideoDetails",
+				method : "POST",
+				data   : {vidId : vidId}
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;	
+		}
+
+		this.postLike = function(vidId){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/postLike",
+				method : "POST",
+				data   : {vidId : vidId},
+				headers : {access_token : (localStorageService.get("userInfo")).accessToken}
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;	
+		}
+
+		this.postComment = function(vidId, comments){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/postComment",
+				method : "POST",
+				data   : {vidId : vidId, comments: comments},
+				headers : {access_token : (localStorageService.get("userInfo")).accessToken}
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;	
+		}
+
+		this.getMyVideos = function(){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/getMyVideos",
+				method : "POST",
+			
+				headers : {access_token : (localStorageService.get("userInfo")).accessToken}
+			}).then(function(resp){
+				deferred.resolve(resp);
+			}, function(err){
+				deferred.reject(err);
+			});
+			return deferred.promise;
+		}
+
+		this.delete = function(vidId, vidPath, thumbPath){
+			var deferred = $q.defer();
+			$http({
+				url    : "/api/delete",
+				method : "POST",
+				data   : {vidId: vidId, vidPath: vidPath, thumbPath: thumbPath},
+				headers : {access_token : (localStorageService.get("userInfo")).accessToken}
+			}).then(function(resp){
 				deferred.resolve(resp);
 			}, function(err){
 				deferred.reject(err);

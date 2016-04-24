@@ -13,7 +13,8 @@ var videoSchema = mongoose.Schema({
 						
 						data        : String,
 						commentedBy : {type: mongoose.Schema.Types.ObjectId, ref:"User"},
-						commentedOn : {type: Date, default:Date.now}
+						commentedOn : {type: Date, default:Date.now},
+						name        : String
 
 					}
 				 ]

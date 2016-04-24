@@ -15,11 +15,14 @@
 				 	<md-list-item style="background: #CC181E;">
 				 	  	<i class="fa fa-home" style="font-size: 20px;color:white"> Home</i>
 				 	</md-list-item> 
-				 	<md-list-item ng-click="alert()">
-				 	  	Profile
+				 	<md-list-item ng-click="gotoProfile()" ng-if="isLoggedIn" style="color: red">
+				 	  	<i class="fa fa-user" style="color: red">&nbsp;</i>
+				 	  	 Profile
 				 	</md-list-item>
-				 	<md-list-item ng-click="toggleFileFeild()">
-				 	  	{{!showFileUpload? "Upload Video": "Cancel"}}
+				 	<md-list-item ng-click="toggleFileFeild()" style="color: red;">
+				 		<i ng-if="!showFileUpload" class="fa fa-upload">&nbsp;</i>
+				 		<i ng-if="showFileUpload" class="fa fa-close">&nbsp;</i>
+				 	  	{{!showFileUpload? " Upload Video": " Cancel"}}
 				 	</md-list-item>
 				</md-list>
 			</div>
@@ -28,14 +31,14 @@
 		
 		<div class="col-md-10" ng-if="!showFileUpload">
 			<div class="row" style="margin-top:10px">
-				<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 video-container" ng-repeat="video in videos">
+				<md-card class="col-xs-12 col-sm-4 col-md-3 col-lg-2 video-container md-whiteframe-z1" ng-repeat="video in videos" style="padding: 5px">
 					<div ng-click="showVid(video._id)">	
 						<div style="" ng-style="">
 							<img ng-src="public/images/{{video.thumbs}}" alt="" class="img-responsive">
 						</div>
-						<div>{{video.name}}</div>
+						<div align="center" style="font-size: 20px;color:red">{{video.name}}</div>
 					</div>
-				</div>
+				</md-card>
 			</div>
 		</div>
 		

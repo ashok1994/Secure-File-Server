@@ -5,7 +5,7 @@ angular.module('app.controllers')
 	
 		if(localStorageService.get("userInfo")){
 			// TODO: Check for token;
-			console.log("yess");
+			// console.log("yess");
 			$rootScope.isLoggedIn = true;
 			// $location.path("/");
 		}else{
@@ -14,7 +14,7 @@ angular.module('app.controllers')
 			// $location.path('/');
 		}
 
-		console.log($location.path());
+		// console.log($location.path());
 		$rootScope.logout = function(){
 			AuthSvc.logout()
 			.then(function(resp){

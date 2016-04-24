@@ -6,7 +6,7 @@ angular.module('app.controllers')
 
 
 
-		var redirect_uri = window.location.protocol+'//'+window.location.host+'/login';
+		var redirect_uri = window.location.protocol+'//'+window.location.host+'/auth/login';
 		console.log(redirect_uri);
 		// TODO : change redirect uri
 

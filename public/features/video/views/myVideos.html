@@ -1,0 +1,16 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-4 col-md-3" ng-repeat="video in videos">
+			<md-card style="min-height: 150px;margin-bottom: 15px">
+				<div style="">
+					<img ng-src="public/images/{{video.thumbs}}" alt="">
+					<div align="center" style="padding-bottom: 10px;">
+						<p>{{video.name}}</p>
+						<a class="btn btn-primary" href="/view/{{video._id}}">Play</a>
+						<a class="btn btn-danger" ng-click="delete(video._id, video.path, video.thumbs)">Delete</a>
+					</div>
+				</div>
+			</md-card>
+		</div>
+	</div>
+</div>

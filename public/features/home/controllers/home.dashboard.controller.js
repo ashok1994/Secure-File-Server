@@ -1,6 +1,6 @@
 angular.module('app.controllers')
-.controller("DashboardController", ["$scope", "$rootScope", "localStorageService", "$route", "$upload", "$route", "AuthSvc", "$location", 
-	function($scope, $rootScope, localStorageService, $route, $upload, $route, AuthSvc, $location){
+.controller("DashboardController", ["$scope", "$rootScope", "localStorageService", "$route", "$upload", "$route", "AuthSvc", "$location", "$routeParams", 
+	function($scope, $rootScope, localStorageService, $route, $upload, $route, AuthSvc, $location, $routeParams){
 	
 
 		// if(!$rootScope.isLoggedIn){
@@ -14,17 +14,36 @@ angular.module('app.controllers')
 		// 	}
 		// }
 		 
-		AuthSvc.getVideos()
-		.then(function(resp){
-			$scope.videos = resp.data;
-			console.log(resp);
-		}, function(err){
-			console.log(err);
-		});
+		if($routeParams.q){
+			AuthSvc.searchVideo($routeParams.q)
+			.then(function(resp){
+				$scope.videos = resp.data;
+				console.log(resp);
+			}, function(err){
+				console.log(err);
+			});
+		}else{
+
+			AuthSvc.getVideos()
+			.then(function(resp){
+				$scope.videos = resp.data;
+				console.log(resp);
+			}, function(err){
+				console.log(err);
+			});
+		}
 
 
 		$scope.showVid = function(vId){
 			$location.path("/view/"+vId);
+		}
+
+		$rootScope.searchVideo = function(q){
+			console.log(q);
+			if(q && q.length)
+				$location.path('/'+q);
+			else
+				return;
 		}
 
 		$scope.file = {};
@@ -65,6 +84,10 @@ angular.module('app.controllers')
 			}else{
 				alert('Please select a file.');
 			}
+		}
+		$scope.gotoProfile = function(){
+			$location.path('/user/profile');
+			return;
 		}
 	}
 ]);
