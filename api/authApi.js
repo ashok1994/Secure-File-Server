@@ -49,8 +49,8 @@ exports.getGmailId = function(req,res){
     var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
     var params = {
         code: req.body.code,
-        client_id: '316165121851-r3kib68cf589pcrjiv6jfesi4g3dro7b.apps.googleusercontent.com',
-        client_secret: "bwBnUUuE_36X1Sf_8-HL_klG",
+        client_id: '<Client-ID>',
+        client_secret: "<Client-Secret>",
 
         redirect_uri: redirect_uri,
         grant_type: 'authorization_code'
